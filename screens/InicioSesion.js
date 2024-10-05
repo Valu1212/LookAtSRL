@@ -14,7 +14,9 @@
 
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button} from 'react-native';
+
+
 
 export default function InicioSesion() {
     return (
@@ -27,15 +29,36 @@ export default function InicioSesion() {
                   INICIAR SESIÓN
                 </Text>
 
-  
 
-                <TextInput
-                placeholder='john@email.com'
+                <TextInput 
+                  placeholder='john@email.com'
+                  style={styles.textInput}
                 />
+
                 <TextInput
                 placeholder='contraseña'
+                style={styles.textInput}
                 />
 
+                <TouchableOpacity>
+                  <Text style={styles.boton}> Iniciar Sesión</Text>
+                </TouchableOpacity>
+           
+                <Text style={styles.linea}>
+                ---------- o  ----------
+                </Text>
+
+                <TouchableOpacity>
+                  <Text style={styles.google}> Ingresar con Google</Text>
+                </TouchableOpacity>
+
+
+                <Text style={styles.createAccount}>
+                ¿No tienes una cuenta? 
+                Crear cuenta
+                </Text>
+
+   
             </View>
           <StatusBar style="auto"/>
         </View>
@@ -61,8 +84,8 @@ const styles = StyleSheet.create({
   },
   cont:{
     backgroundColor: '#fff',
-    paddingTop: 150,
-    paddingBottom: 250,
+    paddingTop: 30,
+    paddingBottom: 120,
     paddingLeft: 80,
     paddingRight: 80,
     borderRadius: 30
@@ -74,6 +97,54 @@ const styles = StyleSheet.create({
       textAlign: 'center', // Centrar texto
       fontWeight: 'bold',
   },
+  textInput: {
+    borderWidth: 1,
+    borderColor: 'black',
+    padding: 10,
+    width:'80%',
+    margingTop: 30,
+    borderRadius: 30,
+    marginVertical: 20,
+    height:40,
+    width: 200,
+    
+    backgroundColor: '#dbdbd8'
+  },
+  boton:{
+    borderWidth: 1,
+    borderColor: 'black',
+    padding: 10,
+    width:'80%',
+    borderRadius: 30,
+    marginVertical: 20,
+    height:40,
+    width: 120,
+    color: 'black',
+    backgroundColor: '#dbdbd8',
+    marginLeft: 32,
+  },
+
+  linea:{
+    marginLeft: 1,
+  },
+
+  google:{
+    borderWidth: 1,
+    borderColor: 'black',
+    padding: 10,
+    width:'80%',
+    borderRadius: 30,
+    marginVertical: 10,
+    height:40,
+    width: 200,
+    backgroundColor: '#dbdbd8'
+  },
+  createAccount:{
+    fontWeight: 'bold',   
+    marginVertical: 10,
+  }
+
+
 
 });
 
