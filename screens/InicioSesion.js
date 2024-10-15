@@ -10,20 +10,15 @@
 // }
 
 
-
-
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button} from 'react-native';
 
 
-
 export default function InicioSesion() {
     return (
         <View style={styles.container}>
-            <Text style={styles.lookAt}>
-              LOOK AT
-            </Text>
+
             <View style={styles.cont}>
                 <Text style={styles.titulo}>
                   INICIAR SESIÓN
@@ -31,6 +26,7 @@ export default function InicioSesion() {
 
 
                 <TextInput 
+             
                   placeholder='john@email.com'
                   style={styles.textInput}
                 />
@@ -45,7 +41,7 @@ export default function InicioSesion() {
                 </TouchableOpacity>
            
                 <Text style={styles.linea}>
-                ---------- o  ----------
+                ------------------ o  ------------------
                 </Text>
 
                 <TouchableOpacity>
@@ -66,11 +62,10 @@ export default function InicioSesion() {
 }
 
 
-
 const styles = StyleSheet.create({
   container: {
       flex: 1, // Cambiado a 1 para ocupar toda la pantalla
-      backgroundColor: '#131313',
+      backgroundColor: '#000',
       alignItems: 'center',
       justifyContent: 'center',
       padding: 20, // Añadido padding para un mejor espaciado
@@ -83,7 +78,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',   
   },
   cont:{
-    backgroundColor: '#fff',
+    backgroundColor: '#000',
     paddingTop: 30,
     paddingBottom: 120,
     paddingLeft: 80,
@@ -93,39 +88,39 @@ const styles = StyleSheet.create({
   },
   titulo: {
       fontSize: 37, // Tamaño de fuente más grande
-      color: '#000', // Color de texto
+      color: '#fff', // Color de texto
       textAlign: 'center', // Centrar texto
       fontWeight: 'bold',
   },
   textInput: {
     borderWidth: 1,
-    borderColor: 'black',
+    borderColor: '#6B6B6B',
     padding: 10,
     width:'80%',
     margingTop: 30,
-    borderRadius: 30,
+    borderRadius: 9,
     marginVertical: 20,
     height:40,
-    width: 200,
-    
-    backgroundColor: '#dbdbd8'
+    width: 350,
+        color:'white',
+    backgroundColor: '#2E2E2E'
   },
   boton:{
     borderWidth: 1,
-    borderColor: 'black',
     padding: 10,
     width:'80%',
-    borderRadius: 30,
+    borderRadius: 9,
     marginVertical: 20,
     height:40,
-    width: 120,
+    width: 350,
     color: 'black',
     backgroundColor: '#dbdbd8',
-    marginLeft: 32,
+    borderColor: '#6B6B6B',
   },
 
   linea:{
     marginLeft: 1,
+    color: 'white',
   },
 
   google:{
@@ -133,15 +128,18 @@ const styles = StyleSheet.create({
     borderColor: 'black',
     padding: 10,
     width:'80%',
-    borderRadius: 30,
+    borderRadius: 9,
     marginVertical: 10,
     height:40,
-    width: 200,
-    backgroundColor: '#dbdbd8'
+    width: 350,
+    backgroundColor: '#dbdbd8',
+    alignItems:'center',
+    justifyContent:'center',
   },
   createAccount:{
     fontWeight: 'bold',   
     marginVertical: 10,
+    color:'white'
   }
 
 
