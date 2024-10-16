@@ -12,7 +12,7 @@
 
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, Image} from 'react-native';
 
 
 export default function InicioSesion() {
@@ -41,10 +41,11 @@ export default function InicioSesion() {
                 </TouchableOpacity>
            
                 <Text style={styles.linea}>
-                ------------------ o  ------------------
+                ----------------- o  -----------------
                 </Text>
 
                 <TouchableOpacity>
+                
                   <Text style={styles.google}> Ingresar con Google</Text>
                 </TouchableOpacity>
 
@@ -101,8 +102,8 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     marginVertical: 20,
     height:40,
-    width: 350,
-        color:'white',
+    width: 320,
+    color:'white',
     backgroundColor: '#2E2E2E'
   },
   boton:{
@@ -112,10 +113,12 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     marginVertical: 20,
     height:40,
-    width: 350,
+    width: 320,
     color: 'black',
     backgroundColor: '#dbdbd8',
     borderColor: '#6B6B6B',
+    textAlign: 'center', // Centrar texto
+    fontSize: 18,
   },
 
   linea:{
@@ -131,10 +134,10 @@ const styles = StyleSheet.create({
     borderRadius: 9,
     marginVertical: 10,
     height:40,
-    width: 350,
+    width: 320,
     backgroundColor: '#dbdbd8',
-    alignItems:'center',
-    justifyContent:'center',
+    textAlign: 'center', // Centrar texto
+    fontSize: 16,
   },
   createAccount:{
     fontWeight: 'bold',   
