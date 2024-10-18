@@ -19,6 +19,7 @@ export default function InicioSesion() {
     return (
         <View style={styles.container}>
 
+
             <View style={styles.cont}>
                 <Text style={styles.titulo}>
                   INICIAR SESIÓN

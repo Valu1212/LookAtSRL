@@ -1,7 +1,7 @@
 import { Text, StyleSheet } from "react-native"
 import InicioSesion from "./screens/InicioSesion"
-
-
+import CrearCuenta from "./screens/CrearCuenta"
+import CursoJavScript from "./screens/CursoJavScript"
 
 
 
@@ -9,7 +9,7 @@ import InicioSesion from "./screens/InicioSesion"
 export default function Home({ navigation }) {
     return (
         <>
-            <InicioSesion/>
+            <CursoJavScript/>
         </>
     )
 }
