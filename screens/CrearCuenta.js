@@ -1,7 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, Image, ScrollView} from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, Image, ScrollView,} from 'react-native';
 import '../styles/crearCuenta.css'; 
+import InicioSesion from './InicioSesion';
 export default function crearCuenta() {
     return (
 
@@ -10,9 +11,9 @@ export default function crearCuenta() {
                 <View style={styles.cont}>
 
                      {/* FOTO DEL LOGO */}
-                    <Text style={styles.logo}>
-                    LookAt logo
-                    </Text>
+                     <Image  style={styles.logo}
+                    source={require('../assets/logo.png')}
+                ></Image>
                     {/* TITULO CREAR CUERNTA */}
                     <Text style={styles.titulo}>
                     Crear Cuenta
@@ -90,7 +91,12 @@ export default function crearCuenta() {
                     Iniciar sesión
                     </Text>
 
-    
+                    
+
+          {/* Texto que actúa como un enlace */}
+          <TouchableOpacity onPress={() => navigation.navigate('Perfil')}>
+        <Text style={styles.linkText}>Ir a la pantalla de perfil</Text>
+      </TouchableOpacity>
                 </View>
           <StatusBar style="auto"/>
         </View>
@@ -121,15 +127,17 @@ const styles = StyleSheet.create({
     logo:{
         color: '#fff', // Color de texto
         textAlign: 'center', // Centrar texto
-        marginTop: 20,
-        fontSize:28,
+        marginTop: 12,
+        width:160,
+        height:160,
+        marginLeft:80,
     },
     titulo: {
         fontSize: 37, // Tamaño de fuente más grande
         color: '#fff', // Color de texto
         textAlign: 'center', // Centrar texto
         fontWeight: 'bold',
-        marginTop: 100,
+        marginTop: 30,
     },
     textInput: {
       borderWidth: 1,
@@ -182,11 +190,13 @@ const styles = StyleSheet.create({
       fontWeight: 'bold',   
       marginVertical: 10,
       color:'white'
+    },
+    linkText:{
+      color:'#fff',
     }
   
 
 });
-
 
 
 

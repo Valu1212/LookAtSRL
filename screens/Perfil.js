@@ -18,52 +18,66 @@ export default function CursoJavaScript() {
             <View style={styles.container}>
                 <View style={styles.cont}>
 
-                    {/* TITULO CREAR CUERNTA */}
-                    <Text style={styles.titulo}>
-                        JAVA SCRIPT
-                    </Text>
-                    
-                    <Image  style={styles.js}
-                    source={require('../assets/js.png')}
-                    >
-                    </Image>
+                {/* ICONO DE PERFIL */}
+                <Image  style={styles.icon}
+                    source={require('../assets/icon-orange.png')}
+                ></Image>
 
-                    <Text style={styles.contenidos} >
-                         Contenidos:{"\n"}
-                    </Text>
+                {/* TITULO CREAR CUERNTA */}
+                <Text style={styles.titulo}>
+                        Perfil
+                </Text>
+                    {/* EDITAR NHOMBRE */}
+                <Text style={styles.createAccount}>
+                        Editar nombre
+                </Text>
+                <TextInput 
+                    placeholder=''
+                    style={styles.textInput}
+                    placeholderTextColor="#fff" 
+                  />
+                {/* EDITAR APELLIDO */}
+                <Text style={styles.createAccount}>
+                        Editar apellido
+                </Text>
+                <TextInput 
+                    placeholder=''
+                    style={styles.textInput}
+                    placeholderTextColor="#fff" 
+                  />
 
-                    <Text style={styles.contenidos2} >
-                         -Variables{"\n"}
-                         -Operadores{"\n"}
-                        -Funciones{"\n"}
-                        -Arrays{"\n"}
-                        -Objetos.{"\n"}
-                        -DOM{"\n"}
+            {/* EDITAR MAIL */}
+                <Text style={styles.createAccount}>
+                        Editar mail
+                </Text>
+                {/* MAIL */}
+                <TextInput 
+                    placeholder=''
+                    style={styles.textInput}
+                    placeholderTextColor="#fff" 
+                  />
+                <Text style={styles.createAccount}>
+                        Contraseña
+                </Text>
+                <TextInput
+                    placeholder=''
+                    style={styles.textInput}
+                    placeholderTextColor="#fff" 
+                    secureTextEntry // Para ocultar el texto de la contraseña
+                />
 
-                    </Text>
-                    <Text style={styles.proxClase}>
-                         Proxima clase:
-                    </Text>
+
 
 
                     <TouchableOpacity>
-                    <Text style={styles.boton}> Crear Cuenta</Text>
+                    <Text style={styles.boton}>Guardar cambios</Text>
                     
                     </TouchableOpacity>
-            
-                    <Text style={styles.linea}>
-                    ----------------- o  -----------------
-                    </Text>
 
-                    <TouchableOpacity>
-                    
-                    <Text style={styles.google}> Ingresar con Google</Text>
-                    </TouchableOpacity>
 
 
                     <Text style={styles.createAccount}>
-                    ¿Ya tienes una cuenta? 
-                    Iniciar sesión
+¿Olvidaste tu contraseña? Recuperala aquí ->
                     </Text>
 
     
@@ -111,18 +125,20 @@ const styles = StyleSheet.create({
         fontSize:20,
         color:'#fff',
     },
-    logo:{
-        color: '#fff', // Color de texto
-        textAlign: 'center', // Centrar texto
-        marginTop: 20,
-        fontSize:28,
+    icon:{
+
+        marginLeft: 125,
+       width:70,
+        height:70,  
+     
     },
+
     titulo: {
         fontSize: 37, // Tamaño de fuente más grande
         color: '#fff', // Color de texto
         textAlign: 'center', // Centrar texto
         fontWeight: 'bold',
-        marginTop: 100,
+        marginTop: 40,
     },
     textInput: {
       borderWidth: 1,
@@ -157,20 +173,7 @@ const styles = StyleSheet.create({
       marginLeft: 1,
       color: 'white',
     },
-  
-    google:{
-      borderWidth: 1,
-      borderColor: 'black',
-      padding: 10,
-      width:'80%',
-      borderRadius: 9,
-      marginVertical: 10,
-      height:40,
-      width: 320,
-      backgroundColor: '#e28000',
-      textAlign: 'center', // Centrar texto
-      fontSize: 16,
-    },
+
     createAccount:{
       fontWeight: 'bold',   
       marginVertical: 10,

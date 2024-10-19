@@ -19,22 +19,31 @@ export default function InicioSesion() {
     return (
         <View style={styles.container}>
 
+                     {/* FOTO DEL LOGO */}
+                     <Image  style={styles.logo}
+                    source={require('../assets/logo.png')}
+                ></Image>
 
             <View style={styles.cont}>
                 <Text style={styles.titulo}>
                   INICIAR SESIÓN
                 </Text>
 
-
+                <Text style={styles.createAccount}>
+Ingresar mail                
+</Text>
                 <TextInput 
-             
                   placeholder='john@email.com'
                   style={styles.textInput}
+                  placeholderTextColor="#fff" 
                 />
-
+                <Text style={styles.createAccount}>
+Ingresar contraseña                
+</Text>
                 <TextInput
                 placeholder='contraseña'
                 style={styles.textInput}
+                placeholderTextColor="#fff" 
                 />
 
                 <TouchableOpacity>
@@ -88,6 +97,14 @@ const styles = StyleSheet.create({
     borderRadius: 30
 
   },
+  logo:{
+    color: '#fff', // Color de texto
+    textAlign: 'center', // Centrar texto
+    marginTop: 12,
+    width:160,
+    height:160,
+    marginLeft:0,
+},
   titulo: {
       fontSize: 37, // Tamaño de fuente más grande
       color: '#fff', // Color de texto
@@ -96,7 +113,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     borderWidth: 1,
-    borderColor: '#6B6B6B',
+    borderColor: '#fff',
     padding: 10,
     width:'80%',
     margingTop: 30,
@@ -105,7 +122,7 @@ const styles = StyleSheet.create({
     height:40,
     width: 320,
     color:'white',
-    backgroundColor: '#2E2E2E'
+    backgroundColor: 'transparent'
   },
   boton:{
     borderWidth: 1,
@@ -116,8 +133,8 @@ const styles = StyleSheet.create({
     height:40,
     width: 320,
     color: 'black',
-    backgroundColor: '#dbdbd8',
-    borderColor: '#6B6B6B',
+    backgroundColor: '#e28000',
+
     textAlign: 'center', // Centrar texto
     fontSize: 18,
   },
@@ -136,7 +153,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     height:40,
     width: 320,
-    backgroundColor: '#dbdbd8',
+    backgroundColor: '#e28000',
     textAlign: 'center', // Centrar texto
     fontSize: 16,
   },
