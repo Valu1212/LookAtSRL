@@ -24,6 +24,7 @@ import Stack6Screen from "./components/Stack6Screen";
 import InicioSesion from "./screens/InicioSesion";
 import CrearCuenta from "./screens/CrearCuenta";
 
+
 const HomeStackNavigator = createNativeStackNavigator();
 
 function MyStack() {
@@ -48,7 +49,7 @@ function MyStack() {
             /> 
 
             <HomeStackNavigator.Screen
-                name="HomeScreen"
+                name="Inicio"
                 component={HomeScreen}
             /> 
 

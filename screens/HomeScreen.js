@@ -3,7 +3,7 @@ import { View, Text, StyleSheet, ScrollView, Image, TouchableOpacity } from "rea
 import { useNavigation } from "@react-navigation/native";
 import { FontAwesome } from "@expo/vector-icons"; // Para íconos de estrellas y más
 
-const HomeScreen = () => {
+const Inicio = () => {
   const navigation = useNavigation();
 
   const handleCardPress = (stack) => {
@@ -291,4 +291,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default Inicio;

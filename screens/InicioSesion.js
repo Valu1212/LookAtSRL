@@ -27,7 +27,7 @@ export default function InicioSesion({navigation}) {
         />
 
         {/* BOTÓN INICIAR SESIÓN */}
-        <TouchableOpacity style={styles.botonContainer} onPress={() => navigation.navigate('HomeScreen')}>
+        <TouchableOpacity style={styles.botonContainer} onPress={() => navigation.navigate('Inicio')}>
           <Text style={styles.botonText}>Iniciar Sesión</Text>
         </TouchableOpacity>
 
