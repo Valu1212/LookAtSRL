@@ -4,14 +4,14 @@ import CrearCuenta from "./screens/CrearCuenta"
 import CursoJavaScript from "./screens/CursoJavaScript"
 import Perfil from "./screens/Perfil"
 import Pagos from "./screens/Pagos"
-
+import Creditos from "./screens/Creditos"
 
 
 
 export default function Home({ navigation }) {
     return (
         <>
-            <Pagos/>
+            <Creditos/>
         </>
     )
 }

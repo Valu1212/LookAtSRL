@@ -1,12 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';  // Importamos useState
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, Image, ScrollView, } from 'react-native';
-
 import { Picker } from '@react-native-picker/picker';  // Importamos Picker
+import { Modal } from 'react-native';
 
 export default function Pagos() {
     const [selectedPayment1, setSelectedPayment1] = useState('Visa');
     const [selectedPayment2, setSelectedPayment2] = useState('Argentina');
+    const [modalVisible, setModalVisible] = useState(false);
+    const realizarCompra = () => {
+        setModalVisible(true);
+    };
 
     return (
         <ScrollView style={styles.scrollView}>
@@ -15,7 +19,7 @@ export default function Pagos() {
 
                 {/* FOTO DEL LOGO */}
                 <Image style={styles.logo}
-                    source={require('../assets/logo.png')}
+                        source={require('../assets/logotq1.png')}
 
                 ></Image>
 
@@ -25,15 +29,6 @@ export default function Pagos() {
                         Medios de pago
                     </Text>
 
-                    <Image style={styles.visaLogo}
-                        source={require('../assets/visalogo3.png')}
-
-                    >
-                    </Image>
-                    <Image style={styles.visaLogo}
-                        source={require('../assets/mastercard.png')}
-                    >
-                    </Image>
 
 
                     <Text style={styles.primerPago}>Seleccione su primer medio de pago</Text>
@@ -100,22 +95,63 @@ export default function Pagos() {
                     <Text style={styles.infoFacturacion}>Información de facturación</Text>
 
 
+                    {/* EXPIRACION */}
 
+                    <Text style={styles.codigos}>
+                        Nombre                                 ApellidoS
+                    </Text>
+                    <View style={styles.persona}>
 
-                    {/* NOMBRE */}
-                    <TextInput 
-                    placeholder='Nombre'
-                    style={styles.nombreApe}
-                    placeholderTextColor="#fff" 
+                        <TextInput
+                            placeholder='Nombre'
+                            style={styles.nomYape}
+                            placeholderTextColor="#535353"
+                            keyboardType='default'
+                            maxLength={2} // Limitar a 2 dígitos
+                        />
+
+                        <TextInput
+                            placeholder='Apellido'
+                            style={styles.nomYape}
+                            placeholderTextColor="#535353"
+                            keyboardType='tedefaultxt'
+                            maxLength={4} // Limitar a 4 dígitos
+                        />
+
+                    </View>
+                    {/* DIRECCION DE FACTURACIÓN */}
+                    <Text style={styles.facturacionText}>
+                        Direccion de facturacion
+                    </Text>
+                    <TextInput
+                        placeholder='Dirección de facturación'
+                        style={styles.facturacion}
+                        placeholderTextColor="#535353"
                     />
 
-                    {/* APELLIDO */}
-                    <TextInput 
-                    placeholder='Apellido'
-                    style={styles.nombreApe}
-                    placeholderTextColor="#fff" 
+                    {/* LOCALIDAD */}
+                    <Text style={styles.facturacionText}>
+                        Localidad
+                    </Text>
+                    <TextInput
+                        placeholder='Localidad'
+                        style={styles.facturacion}
+                        placeholderTextColor="#535353"
                     />
 
+                    {/* CODIGO POSTAL */}
+                    <Text style={styles.facturacionText}>
+                        Codigo postal
+                    </Text>
+                    <TextInput
+                        placeholder='Codigo postal'
+                        style={styles.facturacion}
+                        placeholderTextColor="#535353"
+                        keyboardType='numeric'
+                        maxLength={4} // Limitar a 4 dígitos
+                    />
+
+                    {/* PAISES */}
                     <Text style={styles.pais}>Pais</Text>
                     <View style={styles.pickerContainer2}>
                         <Picker
@@ -133,8 +169,35 @@ export default function Pagos() {
                         </Picker>
                         <Text style={styles.selectedText}>{selectedPayment2}</Text>
                     </View>
+
+                    <TouchableOpacity onPress={realizarCompra}>
+                        <Text style={styles.comprar}> Realizar compra</Text>
+                    </TouchableOpacity>
                 </View>
                 <StatusBar style="auto" />
+                <Modal
+    animationType="slide"
+    transparent={true}
+    visible={modalVisible}
+    onRequestClose={() => setModalVisible(false)}
+>
+    <View style={styles.modalOverlay}>
+        <View style={styles.modalContent}>
+            <Text style={styles.modalText}>La compra ha sido realizada con éxito.</Text>
+            <Text style={styles.inspirationalText}>
+                ¡Felicitaciones! Estás un paso más cerca de dominar la programación. ¡Aprovecha al máximo tus nuevos cursos!
+            </Text>
+            <TouchableOpacity
+                style={styles.closeButton}
+                onPress={() => setModalVisible(false)}
+            >
+                <Text style={styles.closeButtonText}>Volver al menú</Text>
+            </TouchableOpacity>
+        </View>
+    </View>
+</Modal>
+
+
             </View>
         </ScrollView>
     );
@@ -253,6 +316,8 @@ const styles = StyleSheet.create({
         color: 'white',
         marginBottom: -15,
     },
+
+
     cod: {
         flexDirection: 'row', // Alinear elementos en fila
         justifyContent: 'space-between', // Espacio entre los elementos
@@ -260,22 +325,56 @@ const styles = StyleSheet.create({
         marginVertical: 10, // Espaciado vertical
     },
 
-// NOMBRE
+    // NOMBRE Y APELLIDO 
+    persona: {
+        flexDirection: 'row', // Alinear elementos en fila
+        justifyContent: 'space-between', // Espacio entre los elementos
+        width: 20, // Ancho del contenedor
+        marginVertical: 10, // Espaciado vertical
+    },
 
-nombreApe: {
-    borderWidth: 1,
-    borderColor: '#fff',
-    padding: 10,
-    width:'20%',
-    margingTop: 30,
-    borderRadius: 9,
-    marginVertical: 20,
-    height:40,
-    width: 320,
-    color: '#fff',
-    backgroundColor: 'transparent',
-    placeholderTextColor: "",
-  },
+    nomYape: {
+        borderWidth: 1,
+        borderColor: '#fff',
+        padding: 10,
+
+        borderRadius: 9,
+        height: 40,
+        width: 155,
+        color: 'white',
+        backgroundColor: 'transparent',
+        marginRight: 10,
+    },
+    nomApe: {
+        fontWeight: 'bold',
+        marginTop: 20,
+        color: 'white',
+        marginBottom: -15,
+    },
+
+
+
+    // DIRECCION DE FACTURACIÓN
+    facturacionText: {
+        fontWeight: 'bold',
+        marginTop: 20,
+        color: 'white',
+        marginBottom: -15,
+    },
+    facturacion: {
+        borderWidth: 1,
+        borderColor: '#fff',
+        padding: 10,
+        width: '80%',
+        margingTop: 30,
+        borderRadius: 9,
+        marginVertical: 28,
+        height: 40,
+        width: 320,
+        color: '#fff',
+        backgroundColor: 'transparent',
+        placeholderTextColor: "",
+    },
     // PAIS
     pickerContainer2: {
         width: 320,
@@ -293,7 +392,7 @@ nombreApe: {
         color: 'white'
     },
 
-//TITULO INFORMACION DE FACTURACION
+    //TITULO INFORMACION DE FACTURACION
     infoFacturacion: {
         fontSize: 37, // Tamaño de fuente más grande
         color: '#fff', // Color de texto
@@ -301,8 +400,22 @@ nombreApe: {
         fontSize: 25,
         marginTop: 50,
     },
-  
-// PICKERS 
+    // BOTON COMPRAR
+    comprar: {
+        borderWidth: 1,
+        borderColor: 'black',
+        padding: 10,
+        width: '80%',
+        borderRadius: 9,
+        marginVertical: 40,
+        height: 40,
+        width: 320,
+        backgroundColor: '#03DAC6',
+        textAlign: 'center', // Centrar texto
+        fontSize: 16,
+    },
+
+    // PICKERS 
     picker: {
         height: 20, // Altura del Picker
         color: 'white',
@@ -321,6 +434,58 @@ nombreApe: {
         marginTop: -50,
     },
 
+    modalOverlay: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+    },
+    modalContent: {
+        width: '90%',
+        height: '50%', // Aumentar la altura
+        backgroundColor: '#fff',
+        borderRadius: 20,
+        padding: 30,
+        alignItems: 'center',
+        justifyContent: 'center', // Centrar verticalmente
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.25,
+        shadowRadius: 4,
+        elevation: 5,
+    },
+    modalText: {
+        fontSize: 22,
+        fontWeight: 'bold',
+        color: '#333',
+        marginBottom: 20,
+        textAlign: 'center',
+    },
+    inspirationalText: {
+        fontSize: 18, // Aumentar el tamaño de la fuente
+        fontWeight: '600', // Hacer el texto un poco más grueso
+        color: '#555', // Color más suave
+        marginBottom: 30,
+        textAlign: 'center',
+        fontStyle: 'italic', // Texto en cursiva
+        paddingHorizontal: 10, // Añadir un poco de padding
+    },
+    closeButton: {
+        backgroundColor: '#03DAC6',
+        padding: 12,
+        borderRadius: 10,
+        width: '100%',
+        alignItems: 'center',
+    },
+    closeButtonText: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+    },
+    
+
 
 });
-

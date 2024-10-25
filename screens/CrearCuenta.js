@@ -12,7 +12,7 @@ export default function crearCuenta() {
 
                      {/* FOTO DEL LOGO */}
                      <Image  style={styles.logo}
-                    source={require('../assets/logo.png')}
+                    source={require('../assets/logotq1.png')}
                 ></Image>
                     {/* TITULO CREAR CUERNTA */}
                     <Text style={styles.titulo}>
@@ -85,18 +85,15 @@ export default function crearCuenta() {
                     <Text style={styles.google}> Ingresar con Google</Text>
                     </TouchableOpacity>
 
-
+                    <TouchableOpacity>
                     <Text style={styles.createAccount}>
                     ¿Ya tienes una cuenta? 
                     Iniciar sesión
                     </Text>
+                    </TouchableOpacity>
 
                     
 
-          {/* Texto que actúa como un enlace */}
-          <TouchableOpacity onPress={() => navigation.navigate('Perfil')}>
-        <Text style={styles.linkText}>Ir a la pantalla de perfil</Text>
-      </TouchableOpacity>
                 </View>
           <StatusBar style="auto"/>
         </View>
@@ -162,7 +159,7 @@ const styles = StyleSheet.create({
       height:40,
       width: 320,
       color: 'black',
-      backgroundColor: '#e28000',
+      backgroundColor: '#03DAC6',
 
       textAlign: 'center', // Centrar texto
       fontSize: 18,
@@ -182,7 +179,7 @@ const styles = StyleSheet.create({
       marginVertical: 10,
       height:40,
       width: 320,
-      backgroundColor: '#e28000',
+      backgroundColor: '#03DAC6',
       textAlign: 'center', // Centrar texto
       fontSize: 16,
     },

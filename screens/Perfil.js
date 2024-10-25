@@ -20,7 +20,7 @@ export default function CursoJavaScript() {
 
                 {/* ICONO DE PERFIL */}
                 <Image  style={styles.icon}
-                    source={require('../assets/icon-orange.png')}
+                    source={require('../assets/profile.png')}
                 ></Image>
 
                 {/* TITULO CREAR CUERNTA */}
@@ -163,7 +163,7 @@ const styles = StyleSheet.create({
       height:40,
       width: 320,
       color: 'black',
-      backgroundColor: '#e28000',
+      backgroundColor: '#03DAC6',
 
       textAlign: 'center', // Centrar texto
       fontSize: 18,
