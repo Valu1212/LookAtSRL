@@ -48,7 +48,7 @@ function MyStack() {
             /> 
 
             <HomeStackNavigator.Screen
-                name="Inicio"
+                name="HomeScreen"
                 component={HomeScreen}
             /> 
 
