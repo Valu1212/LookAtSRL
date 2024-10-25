@@ -1,203 +1,129 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, Image, ScrollView,} from 'react-native';
-import '../styles/crearCuenta.css'; 
-import InicioSesion from './InicioSesion';
-export default function crearCuenta() {
-    return (
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView } from 'react-native';
 
-        <ScrollView style={styles.scrollView}>
-            <View style={styles.container}>
-                <View style={styles.cont}>
+export default function CrearCuenta({navigation}) {
+  return (
+    <View style={styles.screen}>
+      <ScrollView contentContainerStyle={styles.scrollContainer}>
+        <View style={styles.cont}>
+          {/* FOTO DEL LOGO */}
+          <Image style={styles.logo} source={require('../assets/logotq1.png')} />
 
-                     {/* FOTO DEL LOGO */}
-                     <Image  style={styles.logo}
-                    source={require('../assets/logotq1.png')}
-                ></Image>
-                    {/* TITULO CREAR CUERNTA */}
-                    <Text style={styles.titulo}>
-                    Crear Cuenta
-                    </Text>
+          {/* TITULO CREAR CUENTA */}
+          <Text style={styles.titulo}>Crear Cuenta</Text>
 
-                    {/* NOMBRE */}
-                    <TextInput 
-                    placeholder='Nombre'
-                    style={styles.textInput}
-                    placeholderTextColor="#fff" 
-                    />
+          {/* CAMPOS DE TEXTO */}
+          <TextInput placeholder="Nombre" style={styles.textInput} placeholderTextColor="#fff" />
+          <TextInput placeholder="Apellido" style={styles.textInput} placeholderTextColor="#fff" />
+          <TextInput placeholder="DD/MM/YYYY" style={styles.textInput} keyboardType="numeric" placeholderTextColor="#fff" />
+          <TextInput placeholder="example@gmail.com" style={styles.textInput} placeholderTextColor="#fff" />
+          <TextInput placeholder="Teléfono" style={styles.textInput} placeholderTextColor="#fff" />
+          <TextInput placeholder="Contraseña" style={styles.textInput} secureTextEntry placeholderTextColor="#fff" />
+          <TextInput placeholder="Repita nuevamente la contraseña" style={styles.textInput} secureTextEntry placeholderTextColor="#fff" />
 
-                    {/* APELLIDO */}
-                    <TextInput 
-                    placeholder='Apellido'
-                    style={styles.textInput}
-                    placeholderTextColor="#fff" 
-                    />
-                    
-                    {/* FECHA DE NACIMIENTO */}
-                    <TextInput 
-                        placeholder="DD/MM/YYYY" // Placeholder para la fecha
-                        style={styles.textInput}
-                        keyboardType="numeric" // Solo números en el teclado
-                        placeholderTextColor="#fff" 
-                    />
+          {/* BOTÓN CREAR CUENTA */}
+          <TouchableOpacity style={styles.botonContainer}>
+            <Text style={styles.botonText}>Crear Cuenta</Text>
+          </TouchableOpacity>
 
-                    {/* MAIL */}
-                    <TextInput 
-                    placeholder='example@gmail.com'
-                    style={styles.textInput}
-                    placeholderTextColor="#fff" 
-                    />
+          <Text style={styles.linea}>----------------- o -----------------</Text>
 
-                    {/* TELEFONO */}
-                    <TextInput 
-                    placeholder='telefono'
-                    style={styles.textInput}
-                    placeholderTextColor="#fff" 
-                    />    
+          {/* BOTÓN INGRESAR CON GOOGLE */}
+          <TouchableOpacity style={styles.googleContainer}>
+            <Text style={styles.googleText}>Ingresar con Google</Text>
+          </TouchableOpacity>
 
-                    {/* CONTRASEÑA */}
-                    <TextInput
-                    placeholder='contraseña'
-                    style={styles.textInput}
-                    secureTextEntry // Para ocultar el texto de la contraseña
-                    placeholderTextColor="#fff" 
-                    />
-
-                    {/* REPETIR CONTRASEÑA */}
-                    <TextInput
-                    placeholder='Repita nuevamente la contraseña'
-                    style={styles.textInput}
-                    secureTextEntry // Para ocultar el texto de la contraseña
-                    placeholderTextColor="#fff" 
-                    />
-
-                    <TouchableOpacity>
-                    <Text style={styles.boton}> Crear Cuenta</Text>
-                    
-                    </TouchableOpacity>
-            
-                    <Text style={styles.linea}>
-                    ----------------- o  -----------------
-                    </Text>
-
-                    <TouchableOpacity>
-                    
-                    <Text style={styles.google}> Ingresar con Google</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity>
-                    <Text style={styles.createAccount}>
-                    ¿Ya tienes una cuenta? 
-                    Iniciar sesión
-                    </Text>
-                    </TouchableOpacity>
-
-                    
-
-                </View>
-          <StatusBar style="auto"/>
+          {/* LINK INICIAR SESIÓN */}
+          <TouchableOpacity onPress={() => navigation.navigate('InicioSesion')}>
+            <Text style={styles.createAccount}>
+              ¿Ya tienes una cuenta? <Text style={styles.linkText}>Iniciar sesión</Text>
+            </Text>
+          </TouchableOpacity>
         </View>
-        </ScrollView>
-    );
+      </ScrollView>
+      <StatusBar style="auto" />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-
-    container: {
-        flex: 1, // Cambiado a 1 para ocupar toda la pantalla
-        backgroundColor: '#000',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 20, // Añadido padding para un mejor espaciado
-        color: '#fff',
-    },
-
-    cont:{
-      backgroundColor: '#000',
-      paddingTop: 30,
-      paddingBottom: 120,
-      paddingLeft: 80,
-      paddingRight: 80,
-      borderRadius: 30
-  
-    },
-    logo:{
-        color: '#fff', // Color de texto
-        textAlign: 'center', // Centrar texto
-        marginTop: 12,
-        width:160,
-        height:160,
-        marginLeft:80,
-    },
-    titulo: {
-        fontSize: 37, // Tamaño de fuente más grande
-        color: '#fff', // Color de texto
-        textAlign: 'center', // Centrar texto
-        fontWeight: 'bold',
-        marginTop: 30,
-    },
-    textInput: {
-      borderWidth: 1,
-      borderColor: '#fff',
-      padding: 10,
-      width:'80%',
-      margingTop: 30,
-      borderRadius: 9,
-      marginVertical: 20,
-      height:40,
-      width: 320,
-      color: '#fff',
-      backgroundColor: 'transparent',
-      placeholderTextColor: "",
-    },
-    boton:{
-      borderWidth: 1,
-      padding: 10,
-      width:'80%',
-      borderRadius: 9,
-      marginVertical: 20,
-      height:40,
-      width: 320,
-      color: 'black',
-      backgroundColor: '#03DAC6',
-
-      textAlign: 'center', // Centrar texto
-      fontSize: 18,
-    },
-  
-    linea:{
-      marginLeft: 1,
-      color: 'white',
-    },
-  
-    google:{
-      borderWidth: 1,
-      borderColor: 'black',
-      padding: 10,
-      width:'80%',
-      borderRadius: 9,
-      marginVertical: 10,
-      height:40,
-      width: 320,
-      backgroundColor: '#03DAC6',
-      textAlign: 'center', // Centrar texto
-      fontSize: 16,
-    },
-    createAccount:{
-      fontWeight: 'bold',   
-      marginVertical: 10,
-      color:'white'
-    },
-    linkText:{
-      color:'#fff',
-    }
-  
-
+  screen: {
+    flex: 1,
+    backgroundColor: '#000', // Fondo negro para toda la pantalla
+  },
+  scrollContainer: {
+    flexGrow: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingVertical: 30,
+  },
+  cont: {
+    backgroundColor: '#000',
+    padding: 20,
+    borderRadius: 20,
+    alignItems: 'center',
+    width: '90%', // Para que no ocupe todo el ancho y quede centrado
+  },
+  logo: {
+    width: 160,
+    height: 160,
+    marginBottom: 20,
+  },
+  titulo: {
+    fontSize: 37,
+    color: '#fff',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    marginBottom: 20,
+  },
+  textInput: {
+    borderWidth: 1,
+    borderColor: '#fff',
+    padding: 10,
+    borderRadius: 9,
+    marginVertical: 10,
+    width: 320,
+    color: '#fff',
+  },
+  botonContainer: {
+    borderRadius: 9,
+    backgroundColor: '#03DAC6',
+    paddingVertical: 10,
+    width: 320,
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  botonText: {
+    color: '#000',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  linea: {
+    color: '#fff',
+    marginVertical: 10,
+  },
+  googleContainer: {
+    borderRadius: 9,
+    backgroundColor: '#03DAC6',
+    paddingVertical: 10,
+    width: 320,
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  googleText: {
+    color: '#000',
+    fontSize: 16,
+    fontWeight: 'bold',
+  },
+  createAccount: {
+    fontWeight: 'bold',
+    color: '#fff',
+    marginTop: 20,
+    textAlign: 'center',
+  },
+  linkText: {
+    color: '#03DAC6',
+    textDecorationLine: 'underline',
+  },
 });
-
-
-
-
-
-
-

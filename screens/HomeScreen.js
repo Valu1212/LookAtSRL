@@ -125,12 +125,12 @@ const styles = StyleSheet.create({
   },
 
   header: {
-   // Color más oscuro para el encabezado
+    // Color más oscuro para el encabezado
     padding: 20,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
-    marginBottom: 20,
-    marginTop: 65, // Aumenta el margen superior para bajar el encabezado
+    marginBottom: 5,
+    marginTop: 15, // Ajusta este valor para subir el encabezado
   },
 
   headerTitle: {
@@ -245,48 +245,49 @@ const styles = StyleSheet.create({
   },
 
   recommendedCard: {
-    backgroundColor: "#2A2A2A", // Fondo más oscuro para la tarjeta recomendada
-    marginHorizontal: 15,
-    marginBottom: 20,
-    borderRadius: 10,
-    overflow: "hidden",
     flexDirection: "row",
+    alignItems: "center",
+    marginHorizontal: 15,
+    backgroundColor: "#1F1F1F",
+    borderRadius: 10,
+    padding: 15,
+    marginBottom: 30,
   },
 
   recommendedImage: {
-    width: 100,
-    height: 100,
+    width: 80,
+    height: 80,
+    borderRadius: 5,
   },
 
   recommendedContent: {
-    padding: 10,
-    justifyContent: "center",
+    marginLeft: 10,
+    flex: 1,
   },
 
   recommendedTitle: {
-    fontSize: 16,
-    fontWeight: "bold",
+    fontSize: 18,
     color: "#ffffff",
+    fontWeight: "bold",
   },
 
   progressLabel: {
-    fontSize: 12,
     color: "#cccccc",
     marginTop: 5,
   },
 
   progressBarContainer: {
+    height: 5,
     width: "100%",
-    height: 8,
-    backgroundColor: "#444",
-    borderRadius: 4,
+    backgroundColor: "#cccccc",
+    borderRadius: 5,
+    overflow: "hidden",
     marginTop: 5,
   },
 
   progressBar: {
     height: "100%",
     backgroundColor: "#03DAC6",
-    borderRadius: 4,
   },
 });
 

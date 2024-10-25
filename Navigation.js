@@ -5,8 +5,6 @@ import { NavigationContainer, DefaultTheme, DarkTheme } from "@react-navigation/
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { useColorScheme } from "react-native"; 
 
-
-
 // Pantallas
 import HomeScreen from "./screens/HomeScreen";
 import CourseScreen from "./screens/CourseScreen";
@@ -14,18 +12,17 @@ import Course1Screen from "./screens/Course1Screen";
 import SettingsScreen from "./screens/SettingsScreen";
 import CourseCpp from "./screens/CourseCpp";
 import CourseJav from "./screens/CourseJav";
+import Creditos from "./screens/Creditos";
+import Perfil from "./screens/Perfil";
+import Pagos from "./screens/Pagos";
 import StackScreen from "./components/StackScreen";
 import Stack2Screen from "./components/Stack2Screen";
 import Stack3Screen from "./components/Stack3Screen";
 import Stack4Screen from "./components/Stack4Screen";
 import Stack5Screen from "./components/Stack5Screen";
 import Stack6Screen from "./components/Stack6Screen";
-
-
-
-
-
-
+import InicioSesion from "./screens/InicioSesion";
+import CrearCuenta from "./screens/CrearCuenta";
 
 const HomeStackNavigator = createNativeStackNavigator();
 
@@ -35,14 +32,24 @@ function MyStack() {
             initialRouteName="HomeScreen"
             screenOptions={{
                 headerBackTitleVisible: false,
+                headerStyle: { backgroundColor: '#000' }, // Encabezado negro
+                headerTintColor: '#ffffff', // Color del texto del encabezado
             }}
-        >
+
+            >
             <HomeStackNavigator.Screen
-                name="HomeScreen"
+                name="InicioSesion"
+                component={InicioSesion}
+            /> 
+
+            <HomeStackNavigator.Screen
+                name="CrearCuenta"
+                component={CrearCuenta}
+            /> 
+
+            <HomeStackNavigator.Screen
+                name="Inicio"
                 component={HomeScreen}
-                options={{
-                    headerBackTitleVisible: false,
-                }}
             /> 
 
             <HomeStackNavigator.Screen
@@ -92,6 +99,14 @@ function MyStack() {
                     headerBackTitleVisible: false,
                 }}
             />
+
+            <HomeStackNavigator.Screen
+                name="Pagos"
+                component={Pagos}
+                options={{
+                    headerBackTitleVisible: false,
+                }}
+            />  
         </HomeStackNavigator.Navigator>   
     );
 }
@@ -109,6 +124,8 @@ function CourseStack() {
                 component={Course1Screen} 
                 options={{
                     headerBackTitleVisible: false,
+                    headerStyle: { backgroundColor: '#000' }, // Encabezado negro
+                    headerTintColor: '#ffffff', // Color del texto del encabezado
                 }}
             />
             <CourseStackNavigator.Screen 
@@ -116,6 +133,8 @@ function CourseStack() {
                 component={CourseScreen}
                 options={{
                     headerBackTitleVisible: false,
+                    headerStyle: { backgroundColor: '#000' },
+                    headerTintColor: '#ffffff',
                 }}
             />    
 
@@ -124,6 +143,8 @@ function CourseStack() {
                 component={CourseCpp}
                 options={{
                     headerBackTitleVisible: false,
+                    headerStyle: { backgroundColor: '#000' },
+                    headerTintColor: '#ffffff',
                 }}
             />
 
@@ -132,10 +153,10 @@ function CourseStack() {
                 component={CourseJav}
                 options={{
                     headerBackTitleVisible: false,
+                    headerStyle: { backgroundColor: '#000' },
+                    headerTintColor: '#ffffff',
                 }}
             />
-
-
         </CourseStackNavigator.Navigator>
     );
 }
@@ -148,6 +169,31 @@ function SettingsStack() {
             <SettingsStackNavigator.Screen 
                 name="SettingsScreen" 
                 component={SettingsScreen} 
+                options={{
+                    headerBackTitleVisible: false,
+                    headerStyle: { backgroundColor: '#000' },
+                    headerTintColor: '#ffffff',
+                }}
+            />
+
+            <SettingsStackNavigator.Screen 
+                name="Perfil" 
+                component={Perfil} 
+                options={{
+                    headerBackTitleVisible: false,
+                    headerStyle: { backgroundColor: '#000' },
+                    headerTintColor: '#ffffff',
+                }}
+            />
+    
+            <SettingsStackNavigator.Screen 
+                name="Creditos" 
+                component={Creditos} 
+                options={{
+                    headerBackTitleVisible: false,
+                    headerStyle: { backgroundColor: '#000' },
+                    headerTintColor: '#ffffff',
+                }}
             />
         </SettingsStackNavigator.Navigator>
     );

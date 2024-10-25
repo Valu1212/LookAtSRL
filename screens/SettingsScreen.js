@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet, Switch, TouchableOpacity, TextInput, ScrollView } from "react-native";
 import { Ionicons, MaterialIcons } from '@expo/vector-icons';
 
-const SettingsScreen = () => {
+const SettingsScreen = ({ navigation }) => {
   const [isVibrationEnabled, setIsVibrationEnabled] = useState(true);
   const [areNotificationsEnabled, setAreNotificationsEnabled] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -23,7 +23,10 @@ const SettingsScreen = () => {
           <View style={styles.loginSection}>
             <Ionicons name="person-circle" size={60} color="#03DAC6" />
             <Text style={styles.userText}>Usuario Logueado</Text>
-            <TouchableOpacity style={styles.editButton} onPress={() => alert('Editar perfil')}>
+            <TouchableOpacity
+              style={styles.editButton}
+              onPress={() => navigation.navigate('Perfil')} 
+            >
               <Text style={styles.editButtonText}>Editar Perfil</Text>
             </TouchableOpacity>
           </View>
@@ -81,7 +84,7 @@ const SettingsScreen = () => {
           <Text style={styles.logoutButtonText}>Cerrar Sesión</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style={styles.creditsButton} onPress={() => {}}>
+        <TouchableOpacity style={styles.creditsButton} onPress={() => navigation.navigate('Creditos')}>
           <Text style={styles.creditsButtonText}>Ver Créditos</Text>
         </TouchableOpacity>
       </ScrollView>

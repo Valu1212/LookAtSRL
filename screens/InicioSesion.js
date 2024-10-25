@@ -1,177 +1,124 @@
-// import { StyleSheet, Text, View } from 'react-native';
-// export default function InicioSesion() {
-//     return (
-//         <>
-//             <Text>
-//                 Screen dentro de Screen Uno, para ver como se navega entre screens
-//             </Text>
-//         </>
-//     );
-// }
-
-
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Button, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView } from 'react-native';
 
-
-export default function InicioSesion() {
+export default function InicioSesion({navigation}) {
   return (
-    <View style={styles.container}>
-
+    <ScrollView contentContainerStyle={styles.container} style={{ backgroundColor: '#000' }}>
       {/* FOTO DEL LOGO */}
-      <Image style={styles.logo}
-        source={require('../assets/logotq1.png')}
-      ></Image>
+      <Image style={styles.logo} source={require('../assets/logotq1.png')} />
 
       <View style={styles.cont}>
-        <Text style={styles.titulo}>
-          INICIAR SESIÓN
-        </Text>
+        <Text style={styles.titulo}>INICIAR SESIÓN</Text>
 
-        <Text style={styles.createAccount}>
-          Ingresar mail
-        </Text>
+        <Text style={styles.createAccount}>Ingresar mail</Text>
         <TextInput
           placeholder='john@email.com'
           style={styles.textInput}
           placeholderTextColor="#fff"
         />
-        <Text style={styles.createAccount}>
-          Ingresar contraseña
-        </Text>
+
+        <Text style={styles.createAccount}>Ingresar contraseña</Text>
         <TextInput
           placeholder='contraseña'
+          secureTextEntry={true} // Para que el texto aparezca oculto
           style={styles.textInput}
           placeholderTextColor="#fff"
         />
 
-        <TouchableOpacity>
-          <Text style={styles.boton}> Iniciar Sesión</Text>
+        {/* BOTÓN INICIAR SESIÓN */}
+        <TouchableOpacity style={styles.botonContainer} onPress={() => navigation.navigate('HomeScreen')}>
+          <Text style={styles.botonText}>Iniciar Sesión</Text>
         </TouchableOpacity>
 
-        <Text style={styles.linea}>
-          ----------------- o  -----------------
-        </Text>
+        <Text style={styles.linea}>----------------- o -----------------</Text>
 
-        <TouchableOpacity>
-
-          <Text style={styles.google}> Ingresar con Google</Text>
+        <TouchableOpacity style={styles.googleContainer}>
+          <Text style={styles.googleText}>Ingresar con Google</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity>
-        <Text style={styles.createAccount}>
-          ¿No tienes una cuenta?
-          Crear cuenta
-        </Text>
+        <TouchableOpacity onPress={() => navigation.navigate('CrearCuenta')}>
+          <Text style={styles.createAccount}>¿No tienes una cuenta? Crear cuenta</Text>
         </TouchableOpacity>
-
-      {/* T */}
       </View>
       <StatusBar style="auto" />
-    </View>
+    </ScrollView>
+      
   );
 }
 
-
 const styles = StyleSheet.create({
   container: {
-    flex: 1, // Cambiado a 1 para ocupar toda la pantalla
-    backgroundColor: '#000',
+    flexGrow: 1,
+    backgroundColor: '#000', // Asegura fondo negro
     alignItems: 'center',
     justifyContent: 'center',
-    padding: 20, // Añadido padding para un mejor espaciado
-    color: '#fff',
-  },
-  lookAt: {
-    color: '#FFF',
-    marginBottom: 55,
-    fontSize: 45,
-    fontWeight: 'bold',
-  },
-  cont: {
-    backgroundColor: '#000',
-    paddingTop: 30,
-    paddingBottom: 120,
-    paddingLeft: 80,
-    paddingRight: 80,
-    borderRadius: 30
-
+    paddingVertical: 30,
   },
   logo: {
-    color: '#fff', // Color de texto
-    textAlign: 'center', // Centrar texto
-    marginTop: 80,
+    marginTop: 50,
     width: 160,
     height: 160,
-    marginLeft: 0,
+  },
+  cont: {
+    backgroundColor: '#000', // Asegura fondo negro
+    padding: 20,
+    borderRadius: 20,
+    alignItems: 'center',
   },
   titulo: {
-    fontSize: 37, // Tamaño de fuente más grande
-    color: '#fff', // Color de texto
-    textAlign: 'center', // Centrar texto
+    fontSize: 37,
+    color: '#fff',
+    textAlign: 'center',
     fontWeight: 'bold',
+    marginBottom: 20,
   },
   textInput: {
     borderWidth: 1,
     borderColor: '#fff',
     padding: 10,
-    width: '80%',
-    margingTop: 30,
-    borderRadius: 9,
-    marginVertical: 20,
-    height: 40,
-    width: 320,
-    color: 'white',
-    backgroundColor: 'transparent'
-  },
-  boton: {
-    borderWidth: 1,
-    padding: 10,
-    width: '80%',
-    borderRadius: 9,
-    marginVertical: 20,
-    height: 40,
-    width: 320,
-    color: 'black',
-    backgroundColor: '#03DAC6',
-
-    textAlign: 'center', // Centrar texto
-    fontSize: 18,
-  },
-
-  linea: {
-    marginLeft: 1,
-    color: 'white',
-  },
-
-  google: {
-    borderWidth: 1,
-    borderColor: 'black',
-    padding: 10,
-    width: '80%',
     borderRadius: 9,
     marginVertical: 10,
-    height: 40,
     width: 320,
+    color: '#fff',
+    backgroundColor: 'transparent',
+  },
+  botonContainer: {
+    borderWidth: 1,
+    borderColor: '#03DAC6', // Color del borde del botón
+    borderRadius: 9,
     backgroundColor: '#03DAC6',
-    textAlign: 'center', // Centrar texto
+    paddingVertical: 10,
+    width: 320,
+    alignItems: 'center',
+    marginVertical: 20,
+  },
+  botonText: {
+    color: '#000',
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  linea: {
+    color: '#fff',
+    marginVertical: 10,
+  },
+  googleContainer: {
+    borderRadius: 9,
+    backgroundColor: '#03DAC6',
+    paddingVertical: 10,
+    width: 320,
+    alignItems: 'center',
+    marginVertical: 10,
+  },
+  googleText: {
+    color: '#000',
     fontSize: 16,
+    fontWeight: 'bold',
   },
   createAccount: {
     fontWeight: 'bold',
-    marginVertical: 10,
-    color: 'white'
-  }
-
-
-
+    color: '#fff',
+    marginTop: 20,
+    textAlign: 'center',
+  },
 });
-
-
-
-
-
-
-
-

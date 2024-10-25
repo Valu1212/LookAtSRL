@@ -6,179 +6,130 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  Button,
   Image,
   ScrollView,
 } from "react-native";
 
-export default function CursoJavaScript() {
-    return (
+export default function Perfil() {
+  return (
+    <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.scrollView}>
+        <View style={styles.cont}>
+          {/* ICONO DE PERFIL */}
+          <Image
+            style={styles.icon}
+            source={require('../assets/profile.png')}
+          />
 
-        <ScrollView style={styles.scrollView}>
-            <View style={styles.container}>
-                <View style={styles.cont}>
+          {/* TITULO PERFIL */}
+          <Text style={styles.titulo}>Perfil</Text>
 
-                {/* ICONO DE PERFIL */}
-                <Image  style={styles.icon}
-                    source={require('../assets/profile.png')}
-                ></Image>
+          {/* EDITAR NOMBRE */}
+          <Text style={styles.createAccount}>Editar nombre</Text>
+          <TextInput
+            placeholder=''
+            style={styles.textInput}
+            placeholderTextColor="#fff"
+          />
 
-                {/* TITULO CREAR CUERNTA */}
-                <Text style={styles.titulo}>
-                        Perfil
-                </Text>
-                    {/* EDITAR NHOMBRE */}
-                <Text style={styles.createAccount}>
-                        Editar nombre
-                </Text>
-                <TextInput 
-                    placeholder=''
-                    style={styles.textInput}
-                    placeholderTextColor="#fff" 
-                  />
-                {/* EDITAR APELLIDO */}
-                <Text style={styles.createAccount}>
-                        Editar apellido
-                </Text>
-                <TextInput 
-                    placeholder=''
-                    style={styles.textInput}
-                    placeholderTextColor="#fff" 
-                  />
+          {/* EDITAR APELLIDO */}
+          <Text style={styles.createAccount}>Editar apellido</Text>
+          <TextInput
+            placeholder=''
+            style={styles.textInput}
+            placeholderTextColor="#fff"
+          />
 
-            {/* EDITAR MAIL */}
-                <Text style={styles.createAccount}>
-                        Editar mail
-                </Text>
-                {/* MAIL */}
-                <TextInput 
-                    placeholder=''
-                    style={styles.textInput}
-                    placeholderTextColor="#fff" 
-                  />
-                <Text style={styles.createAccount}>
-                        Contraseña
-                </Text>
-                <TextInput
-                    placeholder=''
-                    style={styles.textInput}
-                    placeholderTextColor="#fff" 
-                    secureTextEntry // Para ocultar el texto de la contraseña
-                />
+          {/* EDITAR EMAIL */}
+          <Text style={styles.createAccount}>Editar mail</Text>
+          <TextInput
+            placeholder=''
+            style={styles.textInput}
+            placeholderTextColor="#fff"
+          />
 
+          {/* CONTRASEÑA */}
+          <Text style={styles.createAccount}>Contraseña</Text>
+          <TextInput
+            placeholder=''
+            style={styles.textInput}
+            placeholderTextColor="#fff"
+            secureTextEntry
+          />
 
+          <TouchableOpacity style={styles.boton}>
+            <Text style={styles.botonText}>Guardar cambios</Text>
+          </TouchableOpacity>
 
-
-                    <TouchableOpacity>
-                    <Text style={styles.boton}>Guardar cambios</Text>
-                    
-                    </TouchableOpacity>
-
-
-
-                    <Text style={styles.createAccount}>
-¿Olvidaste tu contraseña? Recuperala aquí ->
-                    </Text>
-
-    
-                </View>
-          <StatusBar style="auto"/>
+          <Text style={styles.createAccount}>
+            ¿Olvidaste tu contraseña? Recupérala aquí
+          </Text>
         </View>
-        </ScrollView>
-    );
+      </ScrollView>
+      <StatusBar style="auto" />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-
-    container: {
-        flex: 1, // Cambiado a 1 para ocupar toda la pantalla
-        backgroundColor: '#000',
-        alignItems: 'center',
-        justifyContent: 'center',
-        padding: 20, // Añadido padding para un mejor espaciado
-        color: '#fff',
-    },
-
-    cont:{
-      backgroundColor: '#000',
-      paddingTop: 30,
-      paddingBottom: 120,
-      paddingLeft: 80,
-      paddingRight: 80,
-      borderRadius: 30,
-  
-    },
-    js:{
-        width:336,
-        height:210,
-    },
-    contenidos:{
-        marginTop:30,
-        fontSize:23,
-        color:'#fff',
-    },
-    contenidos2:{
-        fontSize:20,
-        color:'#fff',
-    },
-    proxClase:{
-        fontSize:20,
-        color:'#fff',
-    },
-    icon:{
-
-        marginLeft: 125,
-       width:70,
-        height:70,  
-     
-    },
-
-    titulo: {
-        fontSize: 37, // Tamaño de fuente más grande
-        color: '#fff', // Color de texto
-        textAlign: 'center', // Centrar texto
-        fontWeight: 'bold',
-        marginTop: 40,
-    },
-    textInput: {
-      borderWidth: 1,
-      borderColor: '#fff',
-      padding: 10,
-      width:'80%',
-      margingTop: 30,
-      borderRadius: 9,
-      marginVertical: 20,
-      height:40,
-      width: 320,
-      color: '#fff',
-      backgroundColor: 'transparent',
-      placeholderTextColor: "",
-    },
-    boton:{
-      borderWidth: 1,
-      padding: 10,
-      width:'80%',
-      borderRadius: 9,
-      marginVertical: 20,
-      height:40,
-      width: 320,
-      color: 'black',
-      backgroundColor: '#03DAC6',
-
-      textAlign: 'center', // Centrar texto
-      fontSize: 18,
-    },
-  
-    linea:{
-      marginLeft: 1,
-      color: 'white',
-    },
-
-    createAccount:{
-      fontWeight: 'bold',   
-      marginVertical: 10,
-      color:'white'
-    }
-  
-
+  container: {
+    flex: 1, // Cambiado a 1 para ocupar toda la pantalla
+    backgroundColor: '#121212', // Cambiado a un fondo menos oscuro
+  },
+  scrollView: {
+    flexGrow: 1,
+    justifyContent: 'center', // Centrar contenido verticalmente
+    padding: 20, // Espaciado alrededor del contenido
+  },
+  cont: {
+    backgroundColor: '#1e1e1e', // Fondo del contenedor, puedes ajustarlo si es necesario
+    paddingTop: 30,
+    paddingBottom: 50,
+    paddingLeft: 20,
+    paddingRight: 20,
+    borderRadius: 30,
+  },
+  icon: {
+    alignSelf: 'center', // Centrar el icono
+    width: 70,
+    height: 70,
+  },
+  titulo: {
+    fontSize: 37, // Tamaño de fuente más grande
+    color: '#fff', // Color de texto
+    textAlign: 'center', // Centrar texto
+    fontWeight: 'bold',
+    marginTop: 40,
+  },
+  textInput: {
+    borderWidth: 1,
+    borderColor: '#fff', // Color del borde de los campos de texto
+    padding: 10,
+    borderRadius: 9,
+    marginVertical: 20,
+    height: 40,
+    color: '#fff',
+    backgroundColor: 'transparent',
+  },
+  boton: {
+    borderWidth: 1, // Asegúrate de que el borde esté definido
+    borderColor: '#03DAC6', // Color del borde del botón
+    padding: 10,
+    borderRadius: 9,
+    marginVertical: 20,
+    height: 40,
+    backgroundColor: '#03DAC6', // Color de fondo del botón
+    alignItems: 'center', // Centrar texto dentro del botón
+    justifyContent: 'center', // Centrar texto dentro del botón
+  },
+  botonText: {
+    color: 'black', // Color del texto del botón
+    fontSize: 18,
+    fontWeight: 'bold',
+  },
+  createAccount: {
+    fontWeight: 'bold',
+    marginVertical: 10,
+    color: 'white',
+  },
 });

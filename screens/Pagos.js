@@ -13,7 +13,7 @@ export default function Pagos() {
     };
 
     return (
-        <ScrollView style={styles.scrollView}>
+        <ScrollView style={[styles.scrollView, { backgroundColor: '#000' }]}>
 
             <View style={styles.container}>
 

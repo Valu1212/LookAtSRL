@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, Image, ScrollView, TouchableOpacity } from "react-native";
 
-const Stack = () => {
+const Stack = ({navigation}) => {
   const course = {
     title: "Curso de Java Avanzado",
     description: "Impulsa tu carrera con Java avanzado: optimiza proyectos y domina herramientas clave.",
@@ -32,7 +32,10 @@ const Stack = () => {
         <Text style={styles.courseDetail}>Calificación: <Text style={styles.courseDetailValue}>{course.rating} ⭐</Text></Text>
         <Text style={styles.courseDetail}>Estudiantes inscritos: <Text style={styles.courseDetailValue}>{course.students}</Text></Text>
 
-        <TouchableOpacity style={styles.button} onPress={() => alert('¡Curso comprado!')}>
+        <TouchableOpacity 
+          style={styles.button} 
+          onPress={() => navigation.navigate('Pagos')} // Navega a la pantalla de Pagos
+        >
           <Text style={styles.buttonText}>Comprar Curso</Text>
         </TouchableOpacity>
       </View>
