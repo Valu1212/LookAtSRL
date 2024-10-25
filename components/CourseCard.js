@@ -5,12 +5,13 @@ const CourseCard = ({ onPress, image, title, description }) => {
   return (
     <TouchableOpacity onPress={onPress} style={styles.card}>
       <Image
-        source={{ uri: image }} // Asegurarnos de pasar la imagen como URI
+        source={{ uri: image }} 
         style={styles.image}
       />
       <View style={styles.infoContainer}>
         <Text style={styles.title}>{title}</Text>
         <Text style={styles.description}>{description}</Text>
+        <Text style={styles.content}>{content}</Text>
       </View>
     </TouchableOpacity>
   );
