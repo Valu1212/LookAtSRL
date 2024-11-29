@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-11-2024 a las 20:14:21
--- Versión del servidor: 10.4.28-MariaDB
--- Versión de PHP: 8.0.28
+-- Tiempo de generación: 29-11-2024 a las 20:37:04
+-- Versión del servidor: 10.4.32-MariaDB
+-- Versión de PHP: 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -28,11 +28,23 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `usuario` (
-  `ID` int(10) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `password` varchar(250) NOT NULL,
-  `email` varchar(100) NOT NULL
+  `id` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
+  `apellido` varchar(50) NOT NULL,
+  `fechaNacimiento` date NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `telefono` varchar(15) DEFAULT NULL,
+  `contrasenia` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id`, `nombre`, `apellido`, `fechaNacimiento`, `email`, `telefono`, `contrasenia`) VALUES
+(1, 'v', 't', '0000-00-00', 'v@gmail.com', '12', '12'),
+(2, 'vale', 'toledo', '2012-12-12', 'val@gmail.com', '12', '$2b$10$t7z/n6YEg5/UStj8AKn28u9AFNPjQfkkK/cRiHV.A1Y7ZBzxbREUi'),
+(5, 'val', 'tole', '0000-00-00', 'valen@gmail.com', '12', '22');
 
 --
 -- Índices para tablas volcadas
@@ -42,7 +54,8 @@ CREATE TABLE `usuario` (
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`ID`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `email` (`email`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -52,7 +65,7 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `ID` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

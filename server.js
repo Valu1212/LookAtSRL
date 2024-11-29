@@ -38,8 +38,8 @@ app.post('/api/usuario/registrar', async (req, res) => {
 
     try {
         const hashedPassword = await bcrypt.hash(contrasenia, 10);
-        const query = 'INSERT INTO usuario (nombre, apellido, fecha, email, telefono, contrasenia) VALUES (?, ?, ?, ?, ?, ?)';
-        db.query(query, [nombre, apellido, fechaNacimiento, email, telefono, hashedPassword], (err, result) => {
+        const query = 'INSERT INTO usuario (nombre, apellido, fechaNacimiento, email, telefono, contrasenia) VALUES (?, ?, ?, ?, ?, ?)';
+        db.query(query, [nombre, apellido, fechaNacimiento, email, telefono, contrasenia], (err, result) => {
             if (err) {
                 if (err.code === 'ER_DUP_ENTRY') {
                     return res.status(409).json({ message: 'El correo ya está registrado' });
@@ -54,31 +54,36 @@ app.post('/api/usuario/registrar', async (req, res) => {
     }
 }); 
 
-app.get('/api/usuario/login/:email', async (req, res) =>{
-    const email = req.params;
-    const {contrasenia} = req.body;
+
+app.post('/api/usuario/login', async (req, res) => {
+    const { email, contrasenia } = req.body; // Asegúrate de que el cuerpo de la solicitud tenga ambos parámetros
     try {
-        const query = "SELECT * FROM usuario WHERE email = ?";
-        db.query(query, [email], (err, result) =>{
-            if(err){
-                return res.status(500).json({message: 'Error en la solicitud'});
-            }
-            if(result.length === 0){
-                return res.status(404).json({message: 'usuario no encontrado'});
-            }
-            const usuario = result[0];
-            if(usuario.contrasenia === contrasenia){
-                return res.status(200).json({message: 'Login exitoso'})
-            }
-            else{
-                return res.status(401).json({message: 'contraseña incorrecta'});
-            }
-        });
+      const query = "SELECT * FROM usuario WHERE email = ?";
+      db.query(query, [email], (err, result) => {
+        if (err) {
+          return res.status(500).json({ message: 'Error en la solicitud' });
+        }
+        if (result.length === 0) {
+          return res.status(404).json({ message: 'Usuario no encontrado' });
+        }
+        const usuario = result[0];
+        if (usuario.contrasenia === contrasenia) {
+          return res.status(200).json({
+            message: 'Login exitoso',
+            id: usuario.id,
+            nombre: usuario.nombre,
+            apellido: usuario.apellido,
+            email: usuario.email,
+          });
+        } else {
+          return res.status(401).json({ message: 'Contraseña incorrecta' });
+        }
+      });
     } catch (error) {
-        console.error('Error en la consulta', error);
-        res.status(500).json({message: 'Error en la solicitud'});
+      console.error('Error en la consulta', error);
+      res.status(500).json({ message: 'Error en la solicitud' });
     }
-});
+  });
 
 app.put('/api/usuario/actualizar/:id', async (req, res) =>{
     const id = req.params;

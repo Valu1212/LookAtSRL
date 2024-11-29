@@ -1,8 +1,46 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function InicioSesion({navigation}) {
+  // Estados para email y contraseña
+  const [email, setEmail] = useState('');
+  const [contrasenia, setPassword] = useState('');
+
+  // Función para manejar el inicio de sesión
+  const handleLogin = async () => {
+    try {
+      // Realizar solicitud al backend para verificar las credenciales
+      const response = await fetch(`http://192.168.1.37:3000/api/usuario/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ contrasenia, email}), // Enviar la contraseña en el cuerpo de la solicitud
+      });
+      console.log(response)
+      const data = await response.json(); // Respuesta del servidor
+      console.log(data)
+
+      if (response.ok) {
+        // Guardar los datos del usuario en AsyncStorage
+        await AsyncStorage.setItem('userId', data.id.toString());
+        await AsyncStorage.setItem('userName', data.nombre);
+        await AsyncStorage.setItem('userLastName', data.apellido);
+        await AsyncStorage.setItem('userEmail', data.email);
+
+        // Redirigir a la pantalla de inicio
+        navigation.replace('Inicio');  // Usamos replace para que no se pueda volver a la pantalla de login
+      } else {
+        alert('Credenciales incorrectas');
+      }
+    } catch (error) {
+      console.error('Error al iniciar sesión:', error);
+      alert('Hubo un problema con la conexión al servidor');
+    }
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container} style={{ backgroundColor: '#000' }}>
       {/* FOTO DEL LOGO */}
@@ -13,6 +51,8 @@ export default function InicioSesion({navigation}) {
 
         <Text style={styles.createAccount}>Ingresar mail</Text>
         <TextInput
+          value={email}
+          onChangeText={setEmail}
           placeholder='john@email.com'
           style={styles.textInput}
           placeholderTextColor="#fff"
@@ -20,6 +60,8 @@ export default function InicioSesion({navigation}) {
 
         <Text style={styles.createAccount}>Ingresar contraseña</Text>
         <TextInput
+          value={contrasenia}
+          onChangeText={setPassword}
           placeholder='contraseña'
           secureTextEntry={true} // Para que el texto aparezca oculto
           style={styles.textInput}
@@ -27,7 +69,7 @@ export default function InicioSesion({navigation}) {
         />
 
         {/* BOTÓN INICIAR SESIÓN */}
-        <TouchableOpacity style={styles.botonContainer} onPress={() => navigation.navigate('Inicio')}>
+        <TouchableOpacity style={styles.botonContainer} onPress={handleLogin}>
           <Text style={styles.botonText}>Iniciar Sesión</Text>
         </TouchableOpacity>
 
@@ -43,7 +85,6 @@ export default function InicioSesion({navigation}) {
       </View>
       <StatusBar style="auto" />
     </ScrollView>
-      
   );
 }
 

@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView, Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export default function CrearCuenta({ navigation }) {
   const [nombre, setNombre] = useState('');
@@ -24,10 +25,11 @@ export default function CrearCuenta({ navigation }) {
       email,
       telefono,
       contrasenia,
+      contrasenia2,
     };
 
     try {
-      const response = await fetch('/api/usuario/', {
+      const response = await fetch('http://192.168.1.37:3000/api/usuario/registrar', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
