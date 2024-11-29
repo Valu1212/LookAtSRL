@@ -1,40 +1,119 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity, Image, ScrollView, Alert } from 'react-native';
 
-export default function CrearCuenta({navigation}) {
+export default function CrearCuenta({ navigation }) {
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
+  const [fechaNacimiento, setFechaNacimiento] = useState('');
+  const [email, setEmail] = useState('');
+  const [telefono, setTelefono] = useState('');
+  const [contrasenia, setContrasenia] = useState('');
+  const [contrasenia2, setContrasenia2] = useState('');
+
+  const handleCrearCuenta = async () => {
+    if (contrasenia !== contrasenia2) {
+      Alert.alert('Error', 'Las contraseñas no coinciden');
+      return;
+    }
+
+    const usuario = {
+      nombre,
+      apellido,
+      fechaNacimiento,
+      email,
+      telefono,
+      contrasenia,
+    };
+
+    try {
+      const response = await fetch('/api/usuario/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(usuario),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        await AsyncStorage.setItem('usuario', JSON.stringify(data));
+        Alert.alert('Éxito', 'Cuenta creada exitosamente');
+        navigation.navigate('InicioSesion');
+      } else {
+        Alert.alert('Error', data.message || 'No se pudo crear la cuenta');
+      }
+    } catch (error) {
+      Alert.alert('Error', 'Hubo un problema con la conexión');
+    }
+  };
+
   return (
     <View style={styles.screen}>
       <ScrollView contentContainerStyle={styles.scrollContainer}>
         <View style={styles.cont}>
-          {/* FOTO DEL LOGO */}
           <Image style={styles.logo} source={require('../assets/logotq1.png')} />
-
-          {/* TITULO CREAR CUENTA */}
           <Text style={styles.titulo}>Crear Cuenta</Text>
-
-          {/* CAMPOS DE TEXTO */}
-          <TextInput placeholder="Nombre" style={styles.textInput} placeholderTextColor="#fff" />
-          <TextInput placeholder="Apellido" style={styles.textInput} placeholderTextColor="#fff" />
-          <TextInput placeholder="DD/MM/YYYY" style={styles.textInput} keyboardType="numeric" placeholderTextColor="#fff" />
-          <TextInput placeholder="example@gmail.com" style={styles.textInput} placeholderTextColor="#fff" />
-          <TextInput placeholder="Teléfono" style={styles.textInput} placeholderTextColor="#fff" />
-          <TextInput placeholder="Contraseña" style={styles.textInput} secureTextEntry placeholderTextColor="#fff" />
-          <TextInput placeholder="Repita nuevamente la contraseña" style={styles.textInput} secureTextEntry placeholderTextColor="#fff" />
-
-          {/* BOTÓN CREAR CUENTA */}
-          <TouchableOpacity style={styles.botonContainer}>
+          <TextInput
+            placeholder="Nombre"
+            style={styles.textInput}
+            placeholderTextColor="#fff"
+            value={nombre}
+            onChangeText={setNombre}
+          />
+          <TextInput
+            placeholder="Apellido"
+            style={styles.textInput}
+            placeholderTextColor="#fff"
+            value={apellido}
+            onChangeText={setApellido}
+          />
+          <TextInput
+            placeholder="DD/MM/YYYY"
+            style={styles.textInput}
+            keyboardType="numeric"
+            placeholderTextColor="#fff"
+            value={fechaNacimiento}
+            onChangeText={setFechaNacimiento}
+          />
+          <TextInput
+            placeholder="example@gmail.com"
+            style={styles.textInput}
+            placeholderTextColor="#fff"
+            value={email}
+            onChangeText={setEmail}
+          />
+          <TextInput
+            placeholder="Teléfono"
+            style={styles.textInput}
+            placeholderTextColor="#fff"
+            value={telefono}
+            onChangeText={setTelefono}
+          />
+          <TextInput
+            placeholder="Contraseña"
+            style={styles.textInput}
+            secureTextEntry
+            placeholderTextColor="#fff"
+            value={contrasenia}
+            onChangeText={setContrasenia}
+          />
+          <TextInput
+            placeholder="Repita nuevamente la contraseña"
+            style={styles.textInput}
+            secureTextEntry
+            placeholderTextColor="#fff"
+            value={contrasenia2}
+            onChangeText={setContrasenia2}
+          />
+          <TouchableOpacity style={styles.botonContainer} onPress={handleCrearCuenta}>
             <Text style={styles.botonText}>Crear Cuenta</Text>
           </TouchableOpacity>
-
           <Text style={styles.linea}>----------------- o -----------------</Text>
-
-          {/* BOTÓN INGRESAR CON GOOGLE */}
           <TouchableOpacity style={styles.googleContainer}>
             <Text style={styles.googleText}>Ingresar con Google</Text>
           </TouchableOpacity>
-
-          {/* LINK INICIAR SESIÓN */}
           <TouchableOpacity onPress={() => navigation.navigate('InicioSesion')}>
             <Text style={styles.createAccount}>
               ¿Ya tienes una cuenta? <Text style={styles.linkText}>Iniciar sesión</Text>
@@ -50,7 +129,7 @@ export default function CrearCuenta({navigation}) {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: '#000', // Fondo negro para toda la pantalla
+    backgroundColor: '#000',
   },
   scrollContainer: {
     flexGrow: 1,
@@ -63,7 +142,7 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 20,
     alignItems: 'center',
-    width: '90%', // Para que no ocupe todo el ancho y quede centrado
+    width: '90%',
   },
   logo: {
     width: 160,
